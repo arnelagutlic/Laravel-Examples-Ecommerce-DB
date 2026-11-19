@@ -179,4 +179,13 @@ class ProductSeeder extends Seeder
             ->preservingOriginal()
             ->toMediaCollection('featured_image');
     }
+
+    private function attachMedia1(Product $product): void
+    {
+        $images = collect(Storage::disk('local')->files('demo-images'));
+
+        $product->addMediaFromDisk($images->random())
+            ->preservingOriginal()
+            ->toMediaCollection('featured_image');
+    }
 }
