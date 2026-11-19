@@ -59,4 +59,13 @@ class VendorSeeder extends Seeder
             ->preservingOriginal()
             ->toMediaCollection('logo');
     }
+
+    private function attachMedia1(Vendor $vendor): void
+    {
+        $images = collect(Storage::disk('local')->files('demo-images'));
+
+        $vendor->addMediaFromDisk($images->random())
+            ->preservingOriginal()
+            ->toMediaCollection('logo');
+    }
 }
